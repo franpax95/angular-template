@@ -25,7 +25,7 @@ export class AuthGuard implements CanActivate {
     ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
         // Si se deshabilitan los guards desde config, permite siempre el paso
-        if(config.disableGuards) {
+        if (config.disableGuards) {
             return true;
         }
 
@@ -37,7 +37,7 @@ export class AuthGuard implements CanActivate {
         const url: string = rawUrl.toLowerCase();
 
         // Si intenta acceder a la aplicación sin estar autenticado antes...
-        if(!this.EXCEPTION_URLS.includes(url) && !isAuth) {
+        if (!this.EXCEPTION_URLS.includes(url) && !isAuth) {
             // ... se redirecciona al usuario al login
             this.router.navigateByUrl("login");
 
@@ -45,7 +45,7 @@ export class AuthGuard implements CanActivate {
         }
     
         // Si no, si intenta acceder a una de las rutas de logeo habiendo sido autenticado...
-        else if(this.EXCEPTION_URLS.includes(url) && isAuth) {
+        else if (this.EXCEPTION_URLS.includes(url) && isAuth) {
             // ... se redirecciona al usuario a la ruta raíz
             this.router.navigateByUrl("");
 

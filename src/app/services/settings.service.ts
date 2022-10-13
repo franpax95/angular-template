@@ -67,7 +67,7 @@ export class SettingsService {
      */
     public closeAllModals(): void {
         // Cerramos todos los modales
-        for(let i = 0; i < this.modalRefs.length; i++) {
+        for (let i = 0; i < this.modalRefs.length; i++) {
             this.modalRefs[i].instance.close();
         }
 

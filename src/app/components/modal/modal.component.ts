@@ -30,9 +30,9 @@ export class ModalComponent implements OnInit, AfterContentInit {
             const acceptBtn: HTMLButtonElement | null = <HTMLButtonElement> document.getElementById(`general-modal-success-btn-${this.level}`);
             const cancelBtn: HTMLButtonElement | null = <HTMLButtonElement> document.getElementById(`general-modal-danger-btn-${this.level}`);
 
-            if(acceptBtn) {
+            if (acceptBtn) {
                 acceptBtn.focus();
-            } else if(cancelBtn) { 
+            } else if (cancelBtn) { 
                 cancelBtn.focus();
             }
         }, 100);
@@ -50,7 +50,7 @@ export class ModalComponent implements OnInit, AfterContentInit {
      * Manejador de eventos cuando acaba la transición de salida del modal, para destruirlo cuando termina
      */
     public animationDone(event: AnimationEvent): void {
-        if(event.animationName === this.ANIMATION_FADE_OUT) {
+        if (event.animationName === this.ANIMATION_FADE_OUT) {
             this.afterClose.emit(true);
         }
     }
@@ -71,7 +71,7 @@ export class ModalComponent implements OnInit, AfterContentInit {
         event.preventDefault();
         event.stopPropagation();
 
-        if(this.conf && this.conf.onAccept !== undefined) {
+        if (this.conf && this.conf.onAccept !== undefined) {
             this.conf.onAccept();
         }
     }
@@ -83,7 +83,7 @@ export class ModalComponent implements OnInit, AfterContentInit {
         event.preventDefault();
         event.stopPropagation();
 
-        if(this.conf && this.conf.onCancel !== undefined) {
+        if (this.conf && this.conf.onCancel !== undefined) {
             this.conf.onCancel();
         }
     }

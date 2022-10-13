@@ -23,7 +23,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     public ngOnDestroy(): void {
         // Nos dessuscribimos de los diferentes observables
-        if(this.loadingSubscription) {
+        if (this.loadingSubscription) {
             this.loadingSubscription.unsubscribe();
         }
     }

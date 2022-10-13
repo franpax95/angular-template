@@ -27,7 +27,7 @@ export class LoginPage implements OnInit {
         event.preventDefault();
 
         // Validamos el formulario. Si no es válido.
-        if(!this.validate()) {
+        if (!this.validate()) {
             return ;
         }
 
@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
         this.settings.setLoading(false);
         
         // Si el logueo ha ido bien, se redirige al usuario al /
-        if(!error) {
+        if (!error) {
             this.router.navigateByUrl("/");
             this.reset();
         }
@@ -59,18 +59,18 @@ export class LoginPage implements OnInit {
         const errors: Array<string> = [];
 
         // Valida campo username (requerido)
-        if(this.username === '') {
+        if (this.username === '') {
             errors.push('Inserta un nombre de usuario.');
         } 
 
         // Valida campo contraseña (requerido | minlength = 6)
-        if(this.password === '') {
+        if (this.password === '') {
             errors.push('Inserta una contraseña.');
-        } else if(this.password.length < 6) {
+        } else if (this.password.length < 6) {
             errors.push('La contraseña debe tener una longitud mayor que 6.');
         }
         
-        if(errors.length > 0) {
+        if (errors.length > 0) {
             this.settings.openModal({
                 title: 'Error',
                 content: errors,

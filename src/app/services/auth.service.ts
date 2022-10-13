@@ -62,7 +62,7 @@ export class AuthService {
                 localStorage.setItem(this.USER_STORAGE, JSON.stringify(this.user));
 
                 // En caso de recibir token, cargamos el token en la aplicación y lo guardamos en el localStorage
-                if(data.token) {
+                if (data.token) {
                     this.token = data.token;
                     localStorage.setItem(this.TOKEN_STORAGE, this.token);
                 }
@@ -94,7 +94,7 @@ export class AuthService {
                 localStorage.setItem(this.USER_STORAGE, JSON.stringify(this.user));
 
                 // En caso de recibir token, cargamos el token en la aplicación y lo guardamos en el localStorage
-                if(data.token) {
+                if (data.token) {
                     this.token = data.token;
                     localStorage.setItem(this.TOKEN_STORAGE, this.token);
                 }

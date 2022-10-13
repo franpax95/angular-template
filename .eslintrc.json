@@ -21,7 +21,16 @@
                             "parameterProperties": "explicit"
                         }
                     }
-                ]
+                ],
+                "object-curly-spacing": ["error", "always", {
+                    "objectsInObjects": false,
+                    "arraysInObjects": true
+                }],
+                "keyword-spacing": ["error", {
+                    "before": true,
+                    "after": true
+                }],
+                "no-multi-spaces": "error"
             }
         },
         {

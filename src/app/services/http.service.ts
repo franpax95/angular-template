@@ -21,7 +21,7 @@ export class HttpService {
     /**
      * Manejador de peticiones GET
      */
-    public get(url: string, params?: any, headers: IRequestHeader = { headers: {} }): Promise<any> {
+    public get(url: string, params?: any, headers: IRequestHeader = { headers: {}}): Promise<any> {
         const completeUrl: string = this.getCompleteUrl(url, params);
         const reqConfig: AxiosRequestConfig = { headers: { ...headers.headers }};
         return axios.get(completeUrl, reqConfig);
@@ -30,7 +30,7 @@ export class HttpService {
     /**
      * Manejador de peticiones POST
      */
-    public async post(u: string, params?: any, headers: IRequestHeader = { headers: {} }): Promise<any> {
+    public async post(u: string, params?: any, headers: IRequestHeader = { headers: {}}): Promise<any> {
         const url: string = this.getCompleteUrl(u, null, 'POST');
         const reqConfig: AxiosRequestConfig = { headers: { ...headers.headers }};
         return axios.post(url, params, reqConfig);
@@ -39,7 +39,7 @@ export class HttpService {
     /**
      * Manejador de peticiones PUT
      */
-    public async put(u: string, params?: any, headers: IRequestHeader = { headers: {} }): Promise<any> {
+    public async put(u: string, params?: any, headers: IRequestHeader = { headers: {}}): Promise<any> {
         const url: string = this.getCompleteUrl(u, null, 'PUT');
         const reqConfig: AxiosRequestConfig = { headers: { ...headers.headers }};
         return axios.put(url, params, reqConfig);
@@ -57,7 +57,7 @@ export class HttpService {
             }
         };
 
-        if(token) {
+        if (token) {
             requestHeader.headers.Authorization = `Bearer ${token}`;
         }
 
@@ -70,7 +70,7 @@ export class HttpService {
     public getCompleteUrl(url: string, params?: any, method?: string): string {
         const httpMethod = method ? method.toUpperCase() : 'GET';
 
-        switch(httpMethod) {
+        switch (httpMethod) {
             case 'POST':
             case 'PUT':
                 return `${this.baseUrl}${url}`;
@@ -99,7 +99,7 @@ export class HttpService {
         const { status, message } = error;
 
         // Comprobamos primero si ha habido un error de red (Offline)
-        if(!status && message === "Network Error") {
+        if (!status && message === "Network Error") {
             this.settings.openModal({
                 title: 'Error de red',
                 content: ['Te encuentras actualmente sin conexión.'],
@@ -110,7 +110,7 @@ export class HttpService {
         }
 
         // Comprobamos el resto de códigos de estado relevantes
-        switch(status) {
+        switch (status) {
             case HTTP_STATUS_CODE.UNAUTHORIZED:
                 this.settings.openModal({
                     title: 'Error de red',
@@ -163,16 +163,16 @@ export class HttpService {
      * @returns     String con la cadena formateada
      */
     private stringifyUrlParams(data: any): string {
-        if(typeof data === "object") {
+        if (typeof data === "object") {
             const entries: Array<Array<any>> = Object.entries(data);
             const params: string = entries
                 .filter((entry: Array<any>) => (entry[1] !== '' && entry[1] !== null && entry[1] !== -1))
                 .map((entry: Array<any>) => {
                     const [key, value] = entry;
 
-                    if(typeof value === "string") {
+                    if (typeof value === "string") {
                         return `${key}=${value.replace(/\s/g, '%20')}`;
-                    } else if(typeof value === "number" || typeof value === "boolean") {
+                    } else if (typeof value === "number" || typeof value === "boolean") {
                         return `${key}=${value}`;
                     }
 

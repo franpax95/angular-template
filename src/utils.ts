@@ -2,7 +2,7 @@
  * Formatea una fecha recibida en formato 'YYYYMMDD' a formato 'DD/MM/YYYY'
  */
 export const beautifyDate = (d: string) => {
-    if(d.length !== 8) {
+    if (d.length !== 8) {
         return d;
     }
 
@@ -78,7 +78,7 @@ export const getPromise = (): Array<any> => {
  */
 export const getMultiPromises = (length: number): Array<Array<any>> => {
     let entries = [];
-    for(let i = 0; i < length; i++) {
+    for (let i = 0; i < length; i++) {
         entries.push(getPromise());
     }
     
