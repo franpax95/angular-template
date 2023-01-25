@@ -1,0 +1,80 @@
+<div 
+    [class]="'primary-image-input' + ' ' + className + ' ' + (error !== '' ? 'error' : '')" 
+    [ngStyle]="styles"
+>
+    <label [for]="id" [title]="title || label" [id]="id + '-label'">
+        <span>{{ label }}</span>
+    </label>
+
+    <primary-button
+        [icon]="'add_a_photo'"
+        [tooltip]="image !== '' ? 'Pincha aquí para subir otra imagen' : 'Pincha aquí para subir una imagen'"
+        [tooltipPlacement]="'top'"
+        [styles]="{ width: '35px', height: '35px', 'border-radius': '5px' }"
+        (onClick)="onClick($event)"
+    ></primary-button>
+
+    <div class="preview no-image" *ngIf="image === ''" (click)="onClick($event)">
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="30.000000pt" height="30.000000pt" viewBox="0 0 30.000000 30.000000" preserveAspectRatio="xMidYMid meet">
+            <g transform="translate(0.000000,30.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+                <path d="M30 262 c0 -15 229 -236 237 -228 4 4 8 53 8 109 l0 102 -105 3 c-58 1 -109 7 -114 12 -12 12 -26 13 -26 2z m216 -53 c10 -17 -13 -36 -27 -22 -12 12 -4 33 11 33 5 0 12 -5 16 -11z m-25 -70 c26 -18 41 -59 21 -59 -14 0 -73 66 -66 73 10 10 13 9 45 -14z" />
+                <path d="M22 145 l3 -90 89 -3 c79 -3 88 -1 76 13 -9 11 -31 15 -76 15 l-64 0 0 34 c0 19 6 41 14 49 13 13 11 18 -15 43 l-30 29 3 -90z" />
+            </g>
+        </svg>
+
+        <div class="spinner" *ngIf="loading">
+            <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="preview image" *ngIf="image !== ''" (click)="onPreviewClick($event)">
+        <img [src]="image" alt="label" />
+
+        <div class="fade-bg">
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="24.000000pt" height="24.000000pt" viewBox="0 0 24.000000 24.000000" preserveAspectRatio="xMidYMid meet">
+                <g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+                    <path d="M30 178 c0 -24 3 -29 10 -18 7 12 12 12 29 -5 27 -23 40 -12 17 14 -10 11 -15 25 -11 30 4 7 -4 11 -19 11 -23 0 -26 -4 -26 -32z" />
+                    <path d="M165 199 c4 -5 -1 -19 -11 -30 -23 -26 -10 -37 17 -14 17 17 22 17 29 5 7 -11 10 -6 10 18 0 28 -3 32 -26 32 -15 0 -23 -4 -19 -11z" />
+                    <path d="M70 85 c-10 -12 -16 -13 -26 -4 -11 9 -14 5 -14 -20 0 -28 3 -31 31 -31 25 0 29 3 20 14 -9 10 -8 16 4 26 8 7 15 16 15 21 0 14 -16 11 -30 -6z" />
+                    <path d="M140 91 c0 -5 7 -14 15 -21 12 -10 13 -16 4 -26 -9 -11 -5 -14 20 -14 28 0 31 3 31 31 0 25 -3 29 -14 20 -10 -9 -16 -8 -26 4 -14 17 -30 20 -30 6z" />
+                </g>
+            </svg>
+        </div>
+
+        <div class="spinner" *ngIf="loading">
+            <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <button 
+        class="quit-btn" 
+        title="Quitar imagen"
+        *ngIf="image !== ''" 
+        (click)="onClearClick($event)"
+    >
+        <mat-icon>close</mat-icon>
+    </button>
+
+    <input 
+        type="file"
+        [id]="id"
+        [name]="name"
+        [accept]="accept"
+        [disabled]="disabled"
+        (change)="onInputChange($event)"
+    />
+
+    <p *ngIf="error !== ''">
+        {{ error }}
+    </p>
+</div>

@@ -103,7 +103,7 @@ export class HttpService {
             this.settings.openModal({
                 title: 'Error de red',
                 content: ['Te encuentras actualmente sin conexión.'],
-                onAccept: () => this.settings.closeModal()
+                onAccept: () => true
             });
 
             return ;
@@ -115,7 +115,7 @@ export class HttpService {
                 this.settings.openModal({
                     title: 'Error de red',
                     content: ['Te encuentras actualmente sin conexión.'],
-                    onAccept: () => this.settings.closeModal()
+                    onAccept: () => true
                 });
                 break;
 
@@ -126,7 +126,7 @@ export class HttpService {
                         'Ha habido un error de aplicación en la conexión con el servidor.',
                         'Por favor, vuelve a intentarlo de nuevo más tarde.'
                     ],
-                    onAccept: () => this.settings.closeModal()
+                    onAccept: () => true
                 });
                 break;
 
@@ -137,7 +137,7 @@ export class HttpService {
                         'Ha habido un problema con la comunicación con el servidor. Es posible que actualmente esté en mantenimiento o temporalmente inactivo.',
                         'Por favor, vuelve a intentarlo de nuevo más tarde.'
                     ],
-                    onAccept: () => this.settings.closeModal()
+                    onAccept: () => true
                 });
                 break;
         }

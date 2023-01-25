@@ -1,0 +1,40 @@
+:root {
+    --primary: #2192FF;
+    --primary-hover: #4da9ff;
+    --primary-active: #0077e6;
+    --primary-disabled: rgba(33, 146, 255, .65);
+    --primary-light: rgba(33, 146, 255, .25);
+    --primary-dark: #003566;
+
+    --secondary: #7286D3;
+    --secondary-hover: #8b9bda;
+    --secondary-active: #5168c8;
+    --secondary-disabled: rgba(114, 134, 211, .65);
+
+    --success: #28a745;
+    --success-hover: #218838;
+    --success-active: #1e7e34;
+    --success-disabled: rgba(40, 167, 69, .65);
+
+    --danger: #dc3545;
+    --danger-hover: #c82333;
+    --danger-active: #bd2130;
+    --danger-disabled: rgba(220, 53, 69, .65);
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+}
+
+html, 
+body { 
+    height: 100%; 
+}
+
+body {
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}

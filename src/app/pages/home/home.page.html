@@ -1,4 +1,49 @@
 <main id="HomePage" class="HomePage">
-    Home Page works!
-    <button (click)="onModalOpen()">Abrir modal</button>
+    <button (click)="onModalOpen()">Abrir modal con anidación</button>
+
+    <primary-button 
+        [tooltip]="'Mira la consola ;-)'"
+        [tooltipPlacement]="'right'"
+        [className]="'secondary'" 
+        (onClick)="onPrintClick($event)"
+    >Print!</primary-button>
+
+    <primary-button 
+        [tooltip]="'Visualizar imagen de estrella...'"
+        [tooltipPlacement]="'right'"
+        (onClick)="onPreviewClick($event)"
+    >Abrir Modal de Visualización de Imágenes</primary-button>
+
+    <primary-input
+        [label]="'Input Text'"
+        [error]="'Error Text'"
+        [value]="input"
+        (onChange)="onInputChange($event)"
+    ></primary-input>
+
+    <primary-number-input
+        [label]="'Input Number'"
+        [error]="'Error Number'"
+        [append]="'%'"
+        [prepend]="'$'"
+        [styles]="{ 'text-align': 'right' }"
+        [value]="inputNumber"
+        [defaultValue]="69"
+        (onBlur)="onInputNumberChange($event)"
+    ></primary-number-input>
+
+    <primary-select
+        [label]="'Input Selector'"
+        [error]="'Error Selector'"
+        [value]="inputSelect"
+        [options]="selectOptions"
+        (onChange)="onSelectChange($event)"
+    ></primary-select>
+
+    <primary-image-input
+        [label]="'Input Image'"
+        [error]="'Error Image'"
+        [value]="imgInput"
+        (onChange)="onImageChange($event)"
+    ></primary-image-input>
 </main>

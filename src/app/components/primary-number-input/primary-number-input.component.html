@@ -6,20 +6,28 @@
         {{ label }}
     </label>
 
+    <span class="prepend" [ngClass]="{ 'with-label': label !== '' }" *ngIf="prepend !== ''">
+        {{ prepend }}
+    </span>
+
     <input 
         [id]="id"
         [class]="className"
-        [type]="type" 
+        [ngClass]="{ 'with-prepend': prepend !== '', 'with-append': append !== '' }" 
         [name]="name"
         [placeholder]="placeholder"
-        [autocomplete]="autocomplete"
         [disabled]="disabled"
+        [readonly]="readonly"
         [ngStyle]="styles"
-        [value]="value" 
+        [(ngModel)]="input" 
         (blur)="onInputBlur($event)"
         (change)="onInputChange($event)"
         (keyup)="onInputKeyUp($event)"
     />
+
+    <span class="append" [ngClass]="{ 'with-label': label !== '' }" *ngIf="append !== ''">
+        {{ append }}
+    </span>
 
     <p class="primary-input-error" *ngIf="error !== ''">
         {{ error }}

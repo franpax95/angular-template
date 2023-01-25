@@ -20,29 +20,170 @@
 
     font-size: 15px;
     text-align: center;
-    // text-transform: uppercase;
     text-decoration: none;
 
-    transition: background-color .25s;
+    transition: background-color .25s, box-shadow .25s;
+
+    &.tooltip {
+        position: relative;
+
+        &:before, 
+        &:after {
+            pointer-events: none;
+            user-select: none;
+            z-index: 10;
+
+            position: absolute;
+
+            cursor: default;
+            opacity: 0;
+            background: var(--primary);
+            color: #fff;
+            // color: #2b2b2b;
+
+            transition: opacity .25s;
+            transition-delay: .25s;
+        }
+
+        &:before {
+            content: attr(data-tooltip);
+            max-width: 350px;
+            max-width: max(200%, 350px);
+            min-width: 50px;
+            width: max-content;
+            padding: .5rem 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        &:after {
+            content: " ";
+            
+            &.top,
+            &.bottom {
+                width: 12px;
+                height: 8px;
+            }
+
+            &.left,
+            &.right {
+                width: 8px;
+                height: 12px;
+            }
+        }
+
+        &.top {
+            &:before {
+                bottom: 103%;
+                bottom: calc(100% + 13px);
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            &:after {
+                width: 12px;
+                height: 8px;
+                clip-path: polygon(0 0, 50% 100%, 100% 0);
+                bottom: 101%;
+                bottom: calc(100% + 5px);
+                left: 50%;
+                transform: translateX(-50%) rotate(0deg);
+            }
+        }
+
+        &.bottom {
+            &:before {
+                top: 103%;
+                top: calc(100% + 13px);
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            &:after {
+                width: 12px;
+                height: 8px;
+                clip-path: polygon(0 100%, 50% 0, 100% 100%);
+                top: 101%;
+                top: calc(100% + 5px);
+                left: 50%;
+                transform: translateX(-50%) rotate(0deg);
+            }
+        }
+
+        &.left {
+            &:before {
+                right: 103%;
+                right: calc(100% + 13px);
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            &:after {
+                width: 8px;
+                height: 12px;
+                clip-path: polygon(0 0, 0% 100%, 100% 50%);
+                right: 101%;
+                right: calc(100% + 5px);
+                top: 50%;
+                transform: translateY(-50%) rotate(0deg);
+            }
+        }
+
+        &.right {
+            &:before {
+                left: 103%;
+                left: calc(100% + 13px);
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            &:after {
+                width: 8px;
+                height: 12px;
+                clip-path: polygon(0 50%, 100% 0, 100% 100%);
+                left: 101%;
+                left: calc(100% + 5px);
+                top: 50%;
+                transform: translateY(-50%) rotate(0deg);
+            }
+        }
+
+        &:hover:before,
+        &:hover:after {
+            pointer-events: initial;
+            opacity: 1;
+            transition-delay: .75s;
+        }
+    }
 
     &:hover{ background-color: var(--primary-hover); }
     &:active{ background-color: var(--primary-active); }
     &:disabled{ background-color: var(--primary-disabled); }
+    &:focus { box-shadow: 0px 0px 5px 0px var(--primary-light); }
 
     &.success { background-color: var(--success); }
     &.success:hover{ background-color: var(--success-hover); }
     &.success:active{ background-color: var(--success-active); }
     &.success:disabled{ background-color: var(--success-disabled); }
+    &.success:focus { box-shadow: 0px 0px 5px 0px var(--success); }
+    &.success.tooltip:before,
+    &.success.tooltip:after { background-color: var(--success); }
 
     &.danger { background-color: var(--danger); }
     &.danger:hover{ background-color: var(--danger-hover); }
     &.danger:active{ background-color: var(--danger-active); }
     &.danger:disabled{ background-color: var(--danger-disabled); }
+    &.danger:focus { box-shadow: 0px 0px 5px 0px var(--danger); }
+    &.danger.tooltip:before,
+    &.danger.tooltip:after { background-color: var(--danger); }
 
     &.secondary { background-color: var(--secondary); }
     &.secondary:hover{ background-color: var(--secondary-hover); }
     &.secondary:active{ background-color: var(--secondary-active); }
     &.secondary:disabled{ background-color: var(--secondary-disabled); }
+    &.secondary:focus { box-shadow: 0px 0px 5px 0px var(--secondary); }
+    &.secondary.tooltip:before,
+    &.secondary.tooltip:after { background-color: var(--secondary); }
 
     .primary-button-icon {
         display: flex;

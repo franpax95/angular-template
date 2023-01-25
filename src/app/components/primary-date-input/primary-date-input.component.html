@@ -8,17 +8,16 @@
 
     <input 
         [id]="id"
+        type="date"
         [class]="className"
-        [type]="type" 
         [name]="name"
         [placeholder]="placeholder"
         [autocomplete]="autocomplete"
         [disabled]="disabled"
         [ngStyle]="styles"
-        [value]="value" 
+        [value]="date" 
         (blur)="onInputBlur($event)"
         (change)="onInputChange($event)"
-        (keyup)="onInputKeyUp($event)"
     />
 
     <p class="primary-input-error" *ngIf="error !== ''">

@@ -1,0 +1,17 @@
+<div [class]="CLASSNAME" (animationend)="animationDone($event)" (click)="onCloseClick($event)">
+    <div class="modal" (click)="preventClick($event)">
+        <h1 class="title">{{ title }}</h1>
+        
+        <div class="image">
+            <img [src]="format(image)" [alt]="title" />
+        </div>
+
+        <div class="footer">
+            <primary-button
+                [className]="'danger'"
+                [styles]="{ width: '100px', padding: '.5rem .25rem' }"
+                (onClick)="onCloseClick($event)"
+            >Cerrar</primary-button>
+        </div>
+    </div>
+</div>

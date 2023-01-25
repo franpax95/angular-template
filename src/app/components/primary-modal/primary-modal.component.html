@@ -1,4 +1,4 @@
-<div class="ModalComponent" (animationend)="animationDone($event)" [ngStyle]="{ '--level': level, '--next-level': level + 1 }">
+<div [class]="CLASSNAME" (animationend)="animationDone($event)" [ngStyle]="{ '--level': level, '--next-level': level + 1 }">
     <div class="modal">
         <h1 class="title">{{ conf.title }}</h1>
         
@@ -7,21 +7,26 @@
         <div class="footer">
             <primary-button
                 *ngIf="conf.onAccept"
-                [id]="'general-modal-success-btn-' + level"
+                [id]="'primary-modal-success-btn-' + level"
                 [className]="'success'"
-                [text]="'Aceptar'"
                 [styles]="{ width: '100px', padding: '.5rem .25rem' }"
                 (onClick)="onAcceptClick($event)"
-            ></primary-button>
+            >Aceptar</primary-button>
 
             <primary-button
                 *ngIf="conf.onCancel"
-                [id]="'general-modal-danger-btn-' + level"
+                [id]="'primary-modal-danger-btn-' + level"
                 [className]="'danger'"
-                [text]="'Cancelar'"
                 [styles]="{ width: '100px', padding: '.5rem .25rem' }"
                 (onClick)="onCancelClick($event)"
-            ></primary-button>
+            >Cancelar</primary-button>
+
+            <primary-button
+                *ngIf="!conf.onAccept && !conf.onCancel"
+                [id]="'primary-modal-default-btn-' + level"
+                [styles]="{ width: '100px', padding: '.5rem .25rem' }"
+                (onClick)="onCancelClick($event)"
+            >Aceptar</primary-button>
         </div>
     </div>
 </div>

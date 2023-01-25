@@ -49,7 +49,7 @@ export class RegisterPage implements OnInit {
             this.settings.openModal({
                 title: 'Error de Autenticación',
                 content: [error],
-                onAccept: () => this.settings.closeModal()
+                onAccept: () => true
             });
         }
     }
@@ -85,7 +85,7 @@ export class RegisterPage implements OnInit {
             this.settings.openModal({
                 title: 'Error',
                 content: errors,
-                onAccept: () => this.settings.closeModal()
+                onAccept: () => true
             });
         }
 

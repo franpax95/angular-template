@@ -6,20 +6,18 @@
         {{ label }}
     </label>
 
-    <input 
+    <select 
         [id]="id"
         [class]="className"
-        [type]="type" 
-        [name]="name"
-        [placeholder]="placeholder"
-        [autocomplete]="autocomplete"
-        [disabled]="disabled"
         [ngStyle]="styles"
+        [title]="title"
+        [name]="name"
+        [disabled]="disabled"
         [value]="value" 
-        (blur)="onInputBlur($event)"
-        (change)="onInputChange($event)"
-        (keyup)="onInputKeyUp($event)"
-    />
+        (change)="onSelectChange($event)"
+    >
+        <option *ngFor="let option of selectOptions" [value]="option.key">{{ option.value }}</option>
+    </select>
 
     <p class="primary-input-error" *ngIf="error !== ''">
         {{ error }}

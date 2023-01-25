@@ -1,0 +1,97 @@
+/** Primary Input */
+.primary-input {
+    width: 100%;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    .primary-input-label {
+        width: 100%;
+        color: #4d4d4d;
+
+        overflow: hidden;
+
+        font-size: 16px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .primary-input-error {
+        margin: 0;
+
+        position: absolute;
+        top: 100%;
+        top: calc(100% + 4px);
+        left: 0;
+
+        overflow: hidden;
+        color: var(--danger, red);
+
+        font-size: 13px;
+        font-style: italic;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    input, 
+    select {
+        width: 100%;
+        padding: .3rem .15rem;
+    
+        border: solid 1px darkgray;
+        border: solid 1px var(--primary, darkgray);
+        border-radius: 6px;
+        background-color: white;
+        color: #4d4d4d;
+
+        transition: 
+            background-color .25s,
+            border-color .25s;
+
+        &:disabled {
+            background-color: var(--disabled, lightgray);
+            border-color: var(--disabled-active, darkgray);
+        }
+
+        &.with-prepend {
+            padding-left: 20px !important
+        }
+
+        &.with-append {
+            padding-right: 20px !important
+        }
+    }
+
+    .prepend:not(.with-label),
+    .append:not(.with-label) {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .prepend.with-label,
+    .append.with-label {
+        position: absolute;
+        bottom: .25rem;
+    }
+
+    .prepend {
+        left: 5px;
+    }
+
+    .append {
+        right: 5px;
+    }
+
+    &.error {
+        input,
+        select {
+            border-color: var(--danger, red);
+        }
+    }
+}

@@ -1,16 +1,18 @@
 <button
     [id]="id"
     [type]="type"
-    [class]="'PrimaryButton ' + className"
+    [class]="'PrimaryButton ' + className + ' ' + tooltipPlacement"
     [disabled]="disabled"
     [ngStyle]="styles"
+    [ngClass]="{ tooltip: tooltip !== '' }"
+    [attr.data-tooltip]="tooltip"
     (click)="onButtonClick($event)"
 >
     <div class="primary-button-icon" *ngIf="icon !== ''">
         <mat-icon>{{ icon }}</mat-icon>
     </div>
 
-    <span class="primary-button-text" *ngIf="text !== ''">
-        {{ text }}
+    <span class="primary-button-text">
+        <ng-content></ng-content>
     </span>
 </button>
