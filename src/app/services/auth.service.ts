@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-
 import { IUser } from '../interfaces/IUser';
 import { HttpService } from './http.service';
 import { SettingsService } from './settings.service';
-
-import md5 from 'md5';
 import { clone } from 'src/utils';
-
+import { Router } from '@angular/router';
+import md5 from 'md5';
 
 @Injectable({
     providedIn: 'root'
@@ -22,7 +20,7 @@ export class AuthService {
     /** Token del usuario cargado en la aplicación */
     private token: string | null = null;
 
-    constructor(private http: HttpService, private settings: SettingsService) { }
+    constructor(private http: HttpService, private router: Router, private settings: SettingsService) { }
 
     /**
      * Indica si hay un usuario autenticado cargado en la aplicación
@@ -53,7 +51,7 @@ export class AuthService {
         const url: string = 'login';
         const params = { username, password: md5(password) };
 
-        const error = await this.http.post(url, params, this.http.getAuthorizationHeaders())
+        const error = await this.http.post(url, { ...this.http.defaultHttpRequestConfig(), body: params })
             .then(res => {
                 const { data } = res;
 
@@ -85,7 +83,7 @@ export class AuthService {
         const url: string = 'register';
         const params = { username, password: md5(password) };
 
-        const error = await this.http.post(url, params, this.http.getAuthorizationHeaders())
+        const error = await this.http.post(url, { ...this.http.defaultHttpRequestConfig(), body: params })
             .then(res => {
                 const { data } = res;
 
@@ -107,5 +105,14 @@ export class AuthService {
             });
 
         return error;
+    }
+
+    /**
+     * Borra la información guardada y redirige al login
+     */
+    public async logout(): Promise<void> {
+        localStorage.removeItem(this.USER_STORAGE);
+        localStorage.removeItem(this.TOKEN_STORAGE);
+        this.router.navigateByUrl('/login');
     }
 }
