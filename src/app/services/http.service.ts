@@ -44,11 +44,6 @@ export class HttpService {
     /**
      * Manejador de peticiones GET
      */
-    // public get(url: string, params?: any, headers: IRequestHeader = { headers: {}}): Promise<any> {
-    //     const completeUrl: string = this.getCompleteUrl(url, params);
-    //     const reqConfig: AxiosRequestConfig = { headers: { ...headers.headers }};
-    //     return axios.get(completeUrl, reqConfig);
-    // }
     public async get(url: string, config: IHttpRequestConfig = this.defaultHttpRequestConfig()): Promise<any> {
         const { headers, body, timeout, errorModal } = config;
 
@@ -84,7 +79,6 @@ export class HttpService {
                     this.settings.openModal({
                         title: 'Error',
                         content: ['Están habiendo problemas para obtener la información. Por favor, inténtelo de nuevo más tarde.'],
-                        onAccept: () => this.settings.closeModal()
                     });
                 }
 
@@ -95,11 +89,6 @@ export class HttpService {
     /**
      * Manejador de peticiones POST
      */
-    // public async post(u: string, params?: any, headers: IRequestHeader = { headers: {}}): Promise<any> {
-    //     const url: string = this.getCompleteUrl(u, null, 'POST');
-    //     const reqConfig: AxiosRequestConfig = { headers: { ...headers.headers }};
-    //     return axios.post(url, params, reqConfig);
-    // }
     public async post(url: string, config: IHttpRequestConfig = this.defaultHttpRequestConfig()): Promise<any> {
         const { headers, body, timeout, errorModal } = config;
 
@@ -135,7 +124,6 @@ export class HttpService {
                     this.settings.openModal({
                         title: 'Error',
                         content: ['Están habiendo problemas para obtener la información. Por favor, inténtelo de nuevo más tarde.'],
-                        onAccept: () => this.settings.closeModal()
                     });
                 }
 
@@ -146,11 +134,6 @@ export class HttpService {
     /**
      * Manejador de peticiones PUT
      */
-    // public async put(u: string, params?: any, headers: IRequestHeader = { headers: {}}): Promise<any> {
-    //     const url: string = this.getCompleteUrl(u, null, 'PUT');
-    //     const reqConfig: AxiosRequestConfig = { headers: { ...headers.headers }};
-    //     return axios.put(url, params, reqConfig);
-    // }
     public async put(url: string, config: IHttpRequestConfig = this.defaultHttpRequestConfig()): Promise<any> {
         const { headers, body, timeout, errorModal } = config;
 
@@ -186,7 +169,6 @@ export class HttpService {
                     this.settings.openModal({
                         title: 'Error',
                         content: ['Están habiendo problemas para obtener la información. Por favor, inténtelo de nuevo más tarde.'],
-                        onAccept: () => this.settings.closeModal()
                     });
                 }
 
