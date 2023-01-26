@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnChanges, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
 import { clone } from 'src/utils';
 
 export interface IPrimarySelectOption {
@@ -28,7 +28,7 @@ export interface IPrimarySelect {
     templateUrl: './primary-select.component.html',
     styleUrls: ['./primary-select.component.scss']
 })
-export class PrimarySelectComponent implements OnInit, OnChanges {
+export class PrimarySelectComponent implements OnChanges {
     /** Label del input (opcional) */
     @Input() public label: string = '';
     /** Valor del input */
@@ -55,7 +55,6 @@ export class PrimarySelectComponent implements OnInit, OnChanges {
     @Input() public className: string = '';
     /** Clase añadida al container del componente */
     @Input() public containerClassName: string = '';
-
     /** Callback a ejecutar a la hora de hacer change (para parametrizar el componente) */
     @Input() public onChangeCallback: (event: Event) => void | null = null;
 
@@ -65,10 +64,7 @@ export class PrimarySelectComponent implements OnInit, OnChanges {
     /** Objeto con las opciones a renderizar */
     public selectOptions: Array<IPrimarySelectOption> = [];
 
-
     constructor() { }
-
-    public ngOnInit(): void {}
 
     public ngOnChanges(changes: SimpleChanges): void {
         if (changes['options'] && changes['emptyOption']) {

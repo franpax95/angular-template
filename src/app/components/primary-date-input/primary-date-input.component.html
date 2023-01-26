@@ -15,7 +15,7 @@
         [autocomplete]="autocomplete"
         [disabled]="disabled"
         [ngStyle]="styles"
-        [value]="date" 
+        [(ngModel)]="date" 
         (blur)="onInputBlur($event)"
         (change)="onInputChange($event)"
     />

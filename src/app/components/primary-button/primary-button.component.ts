@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 export interface IPrimaryButton {
+    content?: string;
     id?: string;
     type?: string;
     disabled?: string;

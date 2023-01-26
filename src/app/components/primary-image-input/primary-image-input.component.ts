@@ -87,7 +87,6 @@ export class PrimaryImageInputComponent implements OnInit, OnChanges {
             this.settings.openModal({
                 title: 'Aviso',
                 content: [`El tamaño máximo permitido para la imagen es ${this.maxSize}kb. La imagen subida (${size}kb) supera el límite.`],
-                onAccept: () => this.settings.closeModal()
             });
             return;
         }   
@@ -112,7 +111,6 @@ export class PrimaryImageInputComponent implements OnInit, OnChanges {
                 this.settings.openModal({
                     title: 'Aviso',
                     content: [`La imagen elegida (${width}x${height}) es superior a las dimensiones establecidas. Debes subir una imagen de ${this.maxWidth}x${this.maxHeight}.`],
-                    onAccept: () => this.settings.closeModal()
                 });
                 this.loading = false;
                 return;
@@ -121,7 +119,6 @@ export class PrimaryImageInputComponent implements OnInit, OnChanges {
                 this.settings.openModal({
                     title: 'Aviso',
                     content: [`La imagen elegida (${width}x${height}) supera el límite de ancho establecido de ${this.maxWidth}`],
-                    onAccept: () => this.settings.closeModal()
                 });
                 this.loading = false;
                 return;
@@ -130,7 +127,6 @@ export class PrimaryImageInputComponent implements OnInit, OnChanges {
                 this.settings.openModal({
                     title: 'Aviso',
                     content: [`La imagen elegida (${width}x${height}) supera el límite de alto establecido de ${this.maxHeight}`],
-                    onAccept: () => this.settings.closeModal()
                 });
                 this.loading = false;
                 return;

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnChanges, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
 
 export interface IPrimaryNumberInput {
     label?: string;
@@ -28,7 +28,7 @@ export interface IPrimaryNumberInput {
     templateUrl: './primary-number-input.component.html',
     styleUrls: ['./primary-number-input.component.scss']
 })
-export class PrimaryNumberInputComponent implements OnInit, OnChanges {
+export class PrimaryNumberInputComponent implements OnChanges {
     /** Label del input (opcional) */
     @Input() public label: string = '';
     /** Símbolo para añadir al principio del input */
@@ -43,6 +43,8 @@ export class PrimaryNumberInputComponent implements OnInit, OnChanges {
     @Input() public error: string = '';
     /** Id del input */
     @Input() public id: string = '';
+    /** Title del input */
+    @Input() public title: string = '';
     /** Atributo 'name' del input */
     @Input() public name: string = '';
     /** Atributo 'placeholder' del input */
@@ -75,8 +77,6 @@ export class PrimaryNumberInputComponent implements OnInit, OnChanges {
     public input: string = '';
 
     constructor() { }
-
-    public ngOnInit(): void {}
 
     public ngOnChanges(changes: SimpleChanges): void {
         if (changes['value']) {
@@ -116,7 +116,6 @@ export class PrimaryNumberInputComponent implements OnInit, OnChanges {
     private input2value(input: string): number | null {
         if (input === '' || isNaN(Number(input))) {
             return this.defaultValue;
-            // return null;
         }
 
         return Number(input);

@@ -1,6 +1,7 @@
 <div 
     [class]="'primary-input' + ' ' + containerClassName + ' ' + (error !== '' ? 'error' : '')" 
     [ngStyle]="containerStyles"
+    [title]="title"
 >
     <label class="primary-input-label" [title]="label" *ngIf="label !== ''">
         {{ label }}

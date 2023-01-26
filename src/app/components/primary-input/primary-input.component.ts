@@ -36,6 +36,8 @@ export class PrimaryInputComponent {
     @Input() public id: string = '';
     /** Atributo 'type' del input */
     @Input() public type: string = 'text';
+    /** Title del input */
+    @Input() public title: string = '';
     /** Atributo 'name' del input */
     @Input() public name: string = '';
     /** Atributo 'placeholder' del input */

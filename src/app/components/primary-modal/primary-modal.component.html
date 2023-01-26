@@ -25,7 +25,7 @@
                 *ngIf="!conf.onAccept && !conf.onCancel"
                 [id]="'primary-modal-default-btn-' + level"
                 [styles]="{ width: '100px', padding: '.5rem .25rem' }"
-                (onClick)="onCancelClick($event)"
+                (onClick)="onDefaultClick($event)"
             >Aceptar</primary-button>
         </div>
     </div>

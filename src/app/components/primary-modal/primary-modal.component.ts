@@ -4,8 +4,8 @@ import { SettingsService } from 'src/app/services/settings.service';
 export interface IPrimaryModal {
     title: string;
     content: Array<string>;
-    onAccept?: () => void |boolean;
-    onCancel?: () => void |boolean;
+    onAccept?: () => void | boolean;
+    onCancel?: () => void | boolean;
 }
 
 @Component({
@@ -133,7 +133,7 @@ export class PrimaryModalComponent implements AfterContentInit {
      * Shortcut de 'this.cd.detectChanges()'.
      * Para forzar el render en los cambios visuales del modal.
      */
-    protected apply(delay: number = 0): void {
+    private apply(delay: number = 0): void {
         setTimeout(() => this.cd.detectChanges(), delay);
     }
 }
